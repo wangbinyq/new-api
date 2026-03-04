@@ -9,6 +9,7 @@ COPY ./VERSION .
 RUN DISABLE_ESLINT_PLUGIN='true' VITE_REACT_APP_VERSION=$(cat VERSION) bun run build
 
 FROM docker.m.daocloud.io/golang:alpine AS builder2
+ENV GOPROXY=https://goproxy.cn,direct
 ENV GO111MODULE=on CGO_ENABLED=0
 
 ARG TARGETOS
